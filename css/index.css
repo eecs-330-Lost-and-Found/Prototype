@@ -24,43 +24,21 @@ header h1 {
   font-family: Karla;
 }
 
+header h2 {
+  color: papayawhip;
+  margin-left: 20px;
+  font-family: Karla;
+}
+
 form {
   grid-area: main;
   display: grid;
   grid-template-columns: 60% auto;
-  grid-template-rows: 100%;
+  grid-template-rows: auto;
   grid-template-areas: "left right";
 }
 
-#text-fields {
-  grid-area: left;
-  padding: 30px;
-}
-
-.form-field {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  height: 100px;
-}
-
-.form-field .form-label {
-  font-weight: 100;
-  font-size: 20px;
-}
-
-.form-field .text-input {
-  font-family: IBM Plex Sans;
-  font-size: 20px;
-  width: 380px;
-  height: 40px;
-  margin-right: 10px;
-}
-
-
-.form-field button,
-#submit {
+button {
   margin: 0px;
   border-radius: 0px;
   font-size: 16px;
@@ -68,30 +46,87 @@ form {
   height: 35px;
 }
 
+#text-fields {
+  display: flex;
+  flex-direction: column;
+  grid-area: left;
+  padding: 30px;
+}
+
+.form-field {
+  display: flex;
+  align-items: center;
+  height: 100px;
+}
+
+.form-field .form-label {
+  flex: 1;
+  margin-right: 20px;
+  font-size: 20px;
+}
+
+.form-field .text-input {
+  flex: 1.2;
+  padding: 0px 10px;
+  font-size: 20px;
+  height: 40px;
+  width: calc(100% - 200px);
+}
+
+.form-field #category-select {
+  border: 0.5px solid rgb(210, 210, 210);
+  font-size: 20px;
+  width: 200px;
+  height: 40px;
+}
+
 .form-field #file-upload {
   display: none;
 }
 
-#money-error{
+#date-error,
+#reward-error {
   display: none;
+  justify-content: flex-end;
+  color: red;
+  margin-top: -20px;
 }
 
-#images {
+#image-area {
   grid-area: right;
   padding: 30px;
 }
 
-@media screen and (max-width: 1100px) {
-    body {
-        grid-template-rows: 100px;
-        grid-template-columns: 100vh;
-        grid-template-areas: "top" "main" "bottom";
-    }
+.image-viewer {
+  background-image: url("https://748073e22e8db794416a-cc51ef6b37841580002827d4d94d19b6.ssl.cf3.rackcdn.com/not-found.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  height: 300px;
+}
 
-  header {
-    width: 100vw;
+#submit {
+  margin-left: 30px;
+}
+
+@media screen and (max-width: 1100px) {
+  form {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
   }
+
+  #text-fields {
+    padding-bottom: 0px;
+  }
+
   #images {
-    grid-area: bottom;
+    padding-top: 0px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  #radius-radio {
+    width: 220px;
   }
 }
