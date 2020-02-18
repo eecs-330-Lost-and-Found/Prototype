@@ -22,7 +22,6 @@
           <label class="form-label">Location Last Seen:</label>
           <span>
             <input class="text-input" type="text" placeholder="Enter Address" required/>
-            <button class="clear">Clear</button>
           </span>
         </div>
         
@@ -43,6 +42,18 @@
         </div>
 
         <div class="form-field">
+          <label class="form-label">Date Lost:</label>
+          <span>
+            <input
+              class="text-input"
+              type="text"
+              placeholder="YYYY/MM/dd/HH:mm"
+              required
+            /> 
+          </span>
+        </div>
+        
+        <div class="form-field">
           <label class="form-label">Item Categories:</label>
           <select>
               <option value="electronics">electronics</option>
@@ -62,7 +73,6 @@
               placeholder="Enter Item Name"
               required
             />
-            <button class="clear">Clear</button>
           </span>
         </div>
 
@@ -74,19 +84,6 @@
             <button class="clear">Clear</button>
           </span>
         </div>
-        
-        <div class="form-field">
-          <label class="form-label">Date Lost:</label>
-          <span>
-            <input
-              class="text-input"
-              type="text"
-              placeholder="YYYY/MM/dd/HH:mm"
-              required
-            />
-            <button class="clear">Clear</button>
-          </span>
-         </div>
       </div>
 
       <aside id="images">
@@ -102,6 +99,7 @@
       
     </form>
   </body>
+  
   <script>
     const clickFileUpload = () => {
       document.querySelector("#file-upload").click();
