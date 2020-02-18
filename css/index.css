@@ -92,9 +92,17 @@ button {
   margin-top: -20px;
 }
 
-#image {
+#image-area {
   grid-area: right;
   padding: 30px;
+}
+
+.image-viewer {
+  background-image: url("https://748073e22e8db794416a-cc51ef6b37841580002827d4d94d19b6.ssl.cf3.rackcdn.com/not-found.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  height: 300px;
 }
 
 #submit {

@@ -23,3 +23,11 @@ dateInput.oninput = e => {
     dateError.style.display = "none";
   }
 };
+
+const uploader = document.querySelector("#file-upload");
+const imgViewer = document.querySelector(".image-viewer");
+uploader.onchange = e => {
+  imgViewer.style.backgroundImage = `url(${URL.createObjectURL(
+    e.target.files[0]
+  )})`;
+};
