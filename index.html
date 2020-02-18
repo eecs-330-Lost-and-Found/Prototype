@@ -9,6 +9,7 @@
     href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans|Karla&display=swap"
     rel="stylesheet"
   />
+  
   <body>
     <header>
       <h1>LostNFound</h1>
@@ -16,14 +17,15 @@
 
     <form>
       <div id="text-fields">
+        
         <div class="form-field">
           <label class="form-label">Location Last Seen:</label>
           <span>
-            <input class="text-input" type="text" placeholder="Enter Address" />
+            <input class="text-input" type="text" placeholder="Enter Address" required/>
             <button class="clear">Clear</button>
           </span>
         </div>
-
+        
         <div class="form-field">
           <label class="form-label">Radius:</label>
           <span>
@@ -41,30 +43,6 @@
         </div>
 
         <div class="form-field">
-          <label class="form-label">Date Lost:</label>
-          <span>
-            <input
-              class="text-input"
-              type="text"
-              placeholder="YYYY/MM/dd/HH:mm"
-            />
-            <button class="clear">Clear</button>
-          </span>
-        </div>
-
-        <div class="form-field">
-          <label class="form-label">Item Name:</label>
-          <span>
-            <input
-              class="text-input"
-              type="text"
-              placeholder="Enter Item Name"
-            />
-            <button class="clear">Clear</button>
-          </span>
-        </div>
-
-        <div class="form-field">
           <label class="form-label">Item Categories:</label>
           <select>
               <option value="electronics">electronics</option>
@@ -74,14 +52,41 @@
               <option value="others">others</option>
           </select>
         </div>
+      
+        <div class="form-field">
+          <label class="form-label">Item Name:</label>
+          <span>
+            <input
+              class="text-input"
+              type="text"
+              placeholder="Enter Item Name"
+              required
+            />
+            <button class="clear">Clear</button>
+          </span>
+        </div>
 
         <div class="form-field">
           <label class="form-label">Reward:</label>
           <span>
-            <input class="text-input" type="text" placeholder="$" />
+            <input id="money-input" class="text-input" type="text" placeholder="$" />
+            <div id="money-error">Please enter correct currency format (ex. 29, 29.7, 29.70)</div>
             <button class="clear">Clear</button>
           </span>
         </div>
+        
+        <div class="form-field">
+          <label class="form-label">Date Lost:</label>
+          <span>
+            <input
+              class="text-input"
+              type="text"
+              placeholder="YYYY/MM/dd/HH:mm"
+              required
+            />
+            <button class="clear">Clear</button>
+          </span>
+         </div>
       </div>
 
       <aside id="images">
@@ -92,12 +97,19 @@
             <input id="file-upload" type="file" accept="image/*" multiple />
           </span>
         </div>
-        <button id="submit" type="submit">Submit</button>
+        <button id="submit" onclick="clickSubmit()" type="submit">Submit</button>
       </aside>
+      
     </form>
   </body>
   <script>
-    const clickFileUpload = () =>
+    const clickFileUpload = () => {
       document.querySelector("#file-upload").click();
+    }
+
+    const clickSubmit = () => {
+      alert("You have successfully file a lost item!")
+    }
   </script>
+  <script type="text/javascript" src="index.js"></script>
 </html>
