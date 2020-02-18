@@ -20,7 +20,7 @@
         <div class="form-field">
           <label class="form-label">Location Last Seen:</label>
           <span>
-            <input class="text-input" type="text" placeholder="Enter Address" />
+            <input class="text-input" type="text" placeholder="Enter Address" required/>
             <button class="clear">Clear</button>
           </span>
         </div>
@@ -48,6 +48,7 @@
               class="text-input"
               type="text"
               placeholder="YYYY/MM/dd/HH:mm"
+              required
             />
             <button class="clear">Clear</button>
           </span>
@@ -60,6 +61,7 @@
               class="text-input"
               type="text"
               placeholder="Enter Item Name"
+              required
             />
             <button class="clear">Clear</button>
           </span>
@@ -72,6 +74,7 @@
               class="text-input"
               type="text"
               placeholder="Choose Item Categories"
+              required
             />
             <button class="clear">Clear</button>
           </span>
@@ -95,13 +98,18 @@
             <input id="file-upload" type="file" accept="image/*" multiple />
           </span>
         </div>
-        <button id="submit" type="submit">Submit</button>
+        <button id="submit" onclick="clickSubmit()" type="submit">Submit</button>
       </aside>
     </form>
   </body>
   <script>
-    const clickFileUpload = () =>
+    const clickFileUpload = () => {
       document.querySelector("#file-upload").click();
+    }
+
+    const clickSubmit = () => {
+      alert("You have successfully file a lost item!")
+    }
   </script>
   <script type="text/javascript" src="index.js"></script>
 </html>
