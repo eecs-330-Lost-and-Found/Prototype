@@ -9,6 +9,7 @@
     href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans|Karla&display=swap"
     rel="stylesheet"
   />
+  
   <body>
     <header>
       <h1>LostNFound</h1>
@@ -79,7 +80,8 @@
         <div class="form-field">
           <label class="form-label">Reward:</label>
           <span>
-            <input class="text-input" type="text" placeholder="$" />
+            <input id="money-input" class="text-input" type="text" placeholder="$" />
+            <div id="money-error">Please enter correct currency format (ex. 29, 29.7, 29.70)</div>
             <button class="clear">Clear</button>
           </span>
         </div>
@@ -101,4 +103,5 @@
     const clickFileUpload = () =>
       document.querySelector("#file-upload").click();
   </script>
+  <script type="text/javascript" src="index.js"></script>
 </html>

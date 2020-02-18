@@ -71,6 +71,10 @@ form {
   display: none;
 }
 
+#money-error{
+  display: none;
+}
+
 #images {
   grid-area: right;
   padding: 30px;
