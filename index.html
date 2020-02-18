@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 
 <html>
   <title>LostNFound - File Lost Item</title>
@@ -17,6 +17,7 @@
 
     <form>
       <div id="text-fields">
+        
         <div class="form-field">
           <label class="form-label">Location Last Seen:</label>
           <span>
@@ -24,7 +25,7 @@
             <button class="clear">Clear</button>
           </span>
         </div>
-
+        
         <div class="form-field">
           <label class="form-label">Radius:</label>
           <span>
@@ -42,18 +43,16 @@
         </div>
 
         <div class="form-field">
-          <label class="form-label">Date Lost:</label>
-          <span>
-            <input
-              class="text-input"
-              type="text"
-              placeholder="YYYY/MM/dd/HH:mm"
-              required
-            />
-            <button class="clear">Clear</button>
-          </span>
+          <label class="form-label">Item Categories:</label>
+          <select>
+              <option value="electronics">electronics</option>
+              <option value="wallets">wallets</option>
+              <option value="jewelry">jewelry</option>
+              <option value="school supplies">school supplies</option>
+              <option value="others">others</option>
+          </select>
         </div>
-
+      
         <div class="form-field">
           <label class="form-label">Item Name:</label>
           <span>
@@ -68,19 +67,6 @@
         </div>
 
         <div class="form-field">
-          <label class="form-label">Item Categories:</label>
-          <span>
-            <input
-              class="text-input"
-              type="text"
-              placeholder="Choose Item Categories"
-              required
-            />
-            <button class="clear">Clear</button>
-          </span>
-        </div>
-
-        <div class="form-field">
           <label class="form-label">Reward:</label>
           <span>
             <input id="money-input" class="text-input" type="text" placeholder="$" />
@@ -88,6 +74,19 @@
             <button class="clear">Clear</button>
           </span>
         </div>
+        
+        <div class="form-field">
+          <label class="form-label">Date Lost:</label>
+          <span>
+            <input
+              class="text-input"
+              type="text"
+              placeholder="YYYY/MM/dd/HH:mm"
+              required
+            />
+            <button class="clear">Clear</button>
+          </span>
+         </div>
       </div>
 
       <aside id="images">
@@ -100,6 +99,7 @@
         </div>
         <button id="submit" onclick="clickSubmit()" type="submit">Submit</button>
       </aside>
+      
     </form>
   </body>
   <script>
