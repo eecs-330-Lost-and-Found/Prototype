@@ -1,43 +1,94 @@
-body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif;}
-body, html {
-  height: 100%;
-  color: #777;
-  line-height: 1.8;
+body {
+  font-family: IBM Plex Sans;
+  margin: 0px;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 100px auto;
+  grid-template-areas:
+    "top"
+    "main";
+  height: 100vh;
 }
 
-/* Create a Parallax Effect */
-.bgimg-1, .bgimg-2, .bgimg-3 {
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+header {
+  display: flex;
+  grid-area: top;
+  background-color: navy;
+  padding-left: 30px;
+  align-items: center;
 }
 
-/* First image (Logo. Full height) */
-.bgimg-1 {
-  background-image: url('../images/parallax1.jpg');
-  min-height: 100%;
+header h1 {
+  color: papayawhip;
+  margin: 0px;
+  font-family: Karla;
 }
 
-/* Second image (Portfolio) */
-.bgimg-2 {
-  background-image: url("../images/parallax2.jpg");
-  min-height: 400px;
+form {
+  grid-area: main;
+  display: grid;
+  grid-template-columns: 60% auto;
+  grid-template-rows: 100%;
+  grid-template-areas: "left right";
 }
 
-/* Third image (Contact) */
-.bgimg-3 {
-  background-image: url("../images/parallax3.jpg");
-  min-height: 400px;
+#text-fields {
+  grid-area: left;
+  padding: 30px;
 }
 
-.w3-wide {letter-spacing: 10px;}
-.w3-hover-opacity {cursor: pointer;}
+.form-field {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 100px;
+}
 
-/* Turn off parallax scrolling for tablets and phones */
-@media only screen and (max-device-width: 1600px) {
-  .bgimg-1, .bgimg-2, .bgimg-3 {
-    background-attachment: scroll;
-    min-height: 400px;
+.form-field .form-label {
+  font-weight: 100;
+  font-size: 20px;
+}
+
+.form-field .text-input {
+  font-family: IBM Plex Sans;
+  font-size: 20px;
+  width: 300px;
+  height: 40px;
+  margin-right: 10px;
+}
+
+.form-field button,
+#submit {
+  margin: 0px;
+  border-radius: 0px;
+  font-size: 16px;
+  width: 70px;
+  height: 35px;
+}
+
+.form-field #file-upload {
+  display: none;
+}
+
+#images {
+  grid-area: right;
+  padding: 30px;
+}
+
+@media screen and (max-width: 1100px) {
+  body {
+    grid-template-rows: 100px;
+    grid-template-columns: 100vh;
+    grid-template-areas:
+      "top"
+      "main"
+      "bottom";
+  }
+  header {
+    width: 100vw;
+  }
+  #images {
+    grid-area: bottom;
   }
 }
