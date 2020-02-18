@@ -25,9 +25,28 @@ dateInput.oninput = e => {
 };
 
 const uploader = document.querySelector("#file-upload");
-const imgViewer = document.querySelector(".image-viewer");
 uploader.onchange = e => {
+  const imgViewer = document.querySelector(".image-viewer");
   imgViewer.style.backgroundImage = `url(${URL.createObjectURL(
     e.target.files[0]
   )})`;
+};
+
+const submitButton = document.querySelector("#submit");
+submitButton.onclick = e => {
+  const textFields = document.querySelectorAll(".form-input");
+  const radioChecked = document.querySelector("input[name='radius']:checked");
+  const textFilledOut = Array.from(textFields).every(
+    field => field.value || field.value === 0
+  );
+  const inputValidation =
+    rewardError.style.display === "none" && dateError.style.display === "none";
+  if (textFilledOut && radioChecked && inputValidation) {
+    alert("You have successfully filed a lost item!");
+  } else if (!textFilledOut || !radioChecked) {
+    alert("Please fill out all required fields.");
+  } else {
+    e.preventDefault();
+    alert("Please check the format of the reward and date lost.");
+  }
 };
