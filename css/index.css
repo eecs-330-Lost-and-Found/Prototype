@@ -53,10 +53,11 @@ form {
 .form-field .text-input {
   font-family: IBM Plex Sans;
   font-size: 20px;
-  width: 300px;
+  width: 380px;
   height: 40px;
   margin-right: 10px;
 }
+
 
 .form-field button,
 #submit {
