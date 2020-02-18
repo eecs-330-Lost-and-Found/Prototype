@@ -24,6 +24,12 @@ header h1 {
   font-family: Karla;
 }
 
+header h2 {
+  color: papayawhip;
+  margin-left: 20px;
+  font-family: Karla;
+}
+
 form {
   grid-area: main;
   display: grid;
@@ -78,6 +84,7 @@ button {
   display: none;
 }
 
+#date-error,
 #reward-error {
   display: none;
   justify-content: flex-end;
@@ -85,7 +92,7 @@ button {
   margin-top: -20px;
 }
 
-#images {
+#image {
   grid-area: right;
   padding: 30px;
 }

@@ -13,6 +13,7 @@
   <body>
     <header>
       <h1>LostNFound</h1>
+      <h2>File a Lost Item</h2>
     </header>
 
     <form>
@@ -49,7 +50,9 @@
         </div>
 
         <div class="form-field">
-          <label class="form-label">Radius:</label>
+          <label class="form-label"
+            >Radius (possible dist. from above location):</label
+          >
           <span id="radius-radio">
             <input type="radio" name="radius" value="exact" />
             <label>Exact Location</label>
@@ -67,11 +70,15 @@
         <div class="form-field">
           <label class="form-label">Date Lost:</label>
           <input
+            id="date-input"
             class="text-input"
             type="text"
-            placeholder="YYYY/MM/dd"
+            placeholder="YYYY-MM-dd"
             required
           />
+        </div>
+        <div id="date-error">
+          Please enter correct date format (ex. 2020-02-20)
         </div>
 
         <div class="form-field">
@@ -80,7 +87,7 @@
             id="reward-input"
             class="text-input"
             type="text"
-            placeholder="$"
+            placeholder="Enter reward amount ($)"
             required
           />
         </div>
@@ -89,12 +96,12 @@
         </div>
       </div>
 
-      <aside id="images">
+      <aside id="image">
         <div class="form-field">
-          <label class="form-label">Upload Images:</label>
+          <label class="form-label">Upload Image:</label>
           <span>
             <button onclick="clickFileUpload()">Upload</button>
-            <input id="file-upload" type="file" accept="image/*" multiple />
+            <input id="file-upload" type="file" accept="image/*" />
           </span>
         </div>
       </aside>
@@ -111,7 +118,7 @@
     };
 
     const clickSubmit = () => {
-      alert("You have successfully file a lost item!");
+      alert("You have successfully filed a lost item!");
     };
   </script>
   <script type="text/javascript" src="index.js"></script>
