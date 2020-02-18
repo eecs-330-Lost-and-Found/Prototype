@@ -4,7 +4,7 @@ rewardInput.oninput = e => {
   const currVal = e.target.value;
   const isPrice = /^[0-9]+(\.[0-9][0-9]?)?$/.test(currVal);
   if (!isPrice && currVal !== "") {
-    rewardError.style.display = "block";
+    rewardError.style.display = "flex";
   } else {
     rewardError.style.display = "none";
   }

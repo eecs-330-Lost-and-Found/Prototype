@@ -68,7 +68,7 @@ button {
 }
 
 .form-field #category-select {
-  border-radius: 0px;
+  border: 0.5px solid rgb(210, 210, 210);
   font-size: 20px;
   width: 200px;
   height: 40px;
@@ -80,6 +80,9 @@ button {
 
 #reward-error {
   display: none;
+  justify-content: flex-end;
+  color: red;
+  margin-top: -20px;
 }
 
 #images {
