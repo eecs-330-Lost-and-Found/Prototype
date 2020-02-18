@@ -9,7 +9,7 @@
     href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans|Karla&display=swap"
     rel="stylesheet"
   />
-  
+
   <body>
     <header>
       <h1>LostNFound</h1>
@@ -17,14 +17,18 @@
 
     <form>
       <div id="text-fields">
-        
         <div class="form-field">
           <label class="form-label">Location Last Seen:</label>
           <span>
-            <input class="text-input" type="text" placeholder="Enter Address" required/>
+            <input
+              class="text-input"
+              type="text"
+              placeholder="Enter Address"
+              required
+            />
           </span>
         </div>
-        
+
         <div class="form-field">
           <label class="form-label">Radius:</label>
           <span>
@@ -49,21 +53,21 @@
               type="text"
               placeholder="YYYY/MM/dd/HH:mm"
               required
-            /> 
+            />
           </span>
         </div>
-        
+
         <div class="form-field">
           <label class="form-label">Item Categories:</label>
           <select>
-              <option value="electronics">electronics</option>
-              <option value="wallets">wallets</option>
-              <option value="jewelry">jewelry</option>
-              <option value="school supplies">school supplies</option>
-              <option value="others">others</option>
+            <option value="electronics">electronics</option>
+            <option value="wallets">wallets</option>
+            <option value="jewelry">jewelry</option>
+            <option value="school supplies">school supplies</option>
+            <option value="others">others</option>
           </select>
         </div>
-      
+
         <div class="form-field">
           <label class="form-label">Item Name:</label>
           <span>
@@ -79,9 +83,15 @@
         <div class="form-field">
           <label class="form-label">Reward:</label>
           <span>
-            <input id="money-input" class="text-input" type="text" placeholder="$" />
-            <div id="money-error">Please enter correct currency format (ex. 29, 29.7, 29.70)</div>
-            <button class="clear">Clear</button>
+            <input
+              id="reward-input"
+              class="text-input"
+              type="text"
+              placeholder="$"
+            />
+            <div id="reward-error">
+              Please enter correct currency format (ex. 29, 29.7, 29.70)
+            </div>
           </span>
         </div>
       </div>
@@ -94,20 +104,21 @@
             <input id="file-upload" type="file" accept="image/*" multiple />
           </span>
         </div>
-        <button id="submit" onclick="clickSubmit()" type="submit">Submit</button>
+        <button id="submit" onclick="clickSubmit()" type="submit">
+          Submit
+        </button>
       </aside>
-      
     </form>
   </body>
-  
+
   <script>
     const clickFileUpload = () => {
       document.querySelector("#file-upload").click();
-    }
+    };
 
     const clickSubmit = () => {
-      alert("You have successfully file a lost item!")
-    }
+      alert("You have successfully file a lost item!");
+    };
   </script>
   <script type="text/javascript" src="index.js"></script>
 </html>
