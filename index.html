@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 
 <html>
   <title>LostNFound - File Lost Item</title>
@@ -9,114 +9,88 @@
     href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans|Karla&display=swap"
     rel="stylesheet"
   />
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+  <script src="https://www.gstatic.com/firebasejs/7.9.1/firebase-app.js"></script>
+
+  <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+  <script src="https://www.gstatic.com/firebasejs/7.9.1/firebase-analytics.js"></script>
+
+  <!-- Add Firebase products that you want to use -->
+  <script src="https://www.gstatic.com/firebasejs/7.9.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.9.1/firebase-firestore.js"></script>
+
+  <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyCOFVnjXdYG_ugQxFjoSIjKM7959nm_GFE",
+      authDomain: "hcilogin.firebaseapp.com",
+      databaseURL: "https://hcilogin.firebaseio.com",
+      projectId: "hcilogin",
+      storageBucket: "hcilogin.appspot.com",
+      messagingSenderId: "373194240137",
+      appId: "1:373194240137:web:610a7e6eda790da581d658",
+      measurementId: "G-LEPXSGNEMR"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+    
+    </script>
+  
+  <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+  <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+
+  <script type="text/javascript">
+    // FirebaseUI config.
+    var uiConfig = {
+      signInSuccessUrl: 'fileLostItem.html',
+      signInOptions: [
+        // Leave the lines as is for the providers you want to offer your users.
+        firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+        firebase.auth.EmailAuthProvider.PROVIDER_ID,
+      ],
+      // tosUrl and privacyPolicyUrl accept either url string or a callback
+      // function.
+      // Terms of service url/callback.
+      tosUrl: '<your-tos-url>',
+      // Privacy policy url/callback.
+      privacyPolicyUrl: function() {
+        window.location.assign('<your-privacy-policy-url>');
+      }
+    };
+
+    // Initialize the FirebaseUI Widget using Firebase.
+    var ui = new firebaseui.auth.AuthUI(firebase.auth());
+    // The start method will wait until the DOM is loaded.
+    ui.start('#firebaseui-auth-container', uiConfig);
+  </script>
+  <meta name="google-signin-client_id" content="672515673461-j6h0i5vq6dp2h83k8g9jij41ravmb0hm.apps.googleusercontent.com">
 
   <body>
     <header>
-      <h1>LostNFound</h1>
-      <h2>File a Lost Item</h2>
+        <h1>LostNFound</h1>
     </header>
-
-    <form>
-      <div id="text-fields">
-        <div class="form-field">
-          <label class="form-label">Item Name:</label>
-          <input
-            class="text-input form-input"
-            type="text"
-            placeholder="Enter Item Name"
-            required
-          />
-        </div>
-
-        <div class="form-field">
-          <label class="form-label">Item Category:</label>
-          <select id="category-select" class="form-input">
-            <option value="electronics">electronics</option>
-            <option value="wallets">wallets</option>
-            <option value="jewelry">jewelry</option>
-            <option value="school supplies">school supplies</option>
-            <option value="others">others</option>
-          </select>
-        </div>
-
-        <div class="form-field">
-          <label class="form-label">Location Last Seen:</label>
-          <input
-            class="text-input form-input"
-            type="text"
-            placeholder="Enter Address"
-            required
-          />
-        </div>
-
-        <div class="form-field">
-          <label class="form-label">Radius (from location):</label>
-          <span id="radius-radio">
-            <input type="radio" name="radius" value="exact" />
-            <label>Address is exact</label>
-            <input type="radio" name="radius" value="0.1" />
-            <label>0.1 mi</label>
-            <input type="radio" name="radius" value="0.25" />
-            <label>0.25 mi</label>
-            <input type="radio" name="radius" value="0.5" />
-            <label>0.5 mi</label>
-            <input type="radio" name="radius" value="1" />
-            <label>1 mi</label>
-          </span>
-        </div>
-
-        <div class="form-field">
-          <label class="form-label">Date Lost:</label>
-          <input
-            id="date-input"
-            class="text-input form-input"
-            type="text"
-            placeholder="YYYY-MM-dd"
-            required
-          />
-        </div>
-        <div id="date-error">
-          Please enter correct date format (ex. 2020-02-20)
-        </div>
-
-        <div class="form-field">
-          <label class="form-label">Reward:</label>
-          <input
-            id="reward-input"
-            class="text-input form-input"
-            type="text"
-            placeholder="Enter reward amount ($)"
-            required
-          />
-        </div>
-        <div id="reward-error">
-          Please enter correct currency format (ex. 29, 29.7, 29.70)
-        </div>
-      </div>
-
-      <aside id="image-area">
-        <div class="form-field">
-          <label class="form-label">Upload Image:</label>
-          <span>
-            <button type="button" onclick="clickFileUpload()">
-              Upload
-            </button>
-            <input id="file-upload" type="file" accept="image/*" />
-          </span>
-        </div>
-        <div class="image-viewer"></div>
-      </aside>
-
-      <button id="submit" type="submit">
-        Submit
-      </button>
-    </form>
+    <div id="firebaseui-auth-container"></div>
   </body>
-
   <script>
-    const clickFileUpload = e => {
-      document.querySelector("#file-upload").click();
-    };
+      const signin = () => {
+        firebase.auth().signInWithPopup(provider).then(function(result) {
+        // This gives you a Google Access Token. You can use it to access the Google API.
+        var token = result.credential.accessToken;
+        // The signed-in user info.
+        var user = result.user;
+        // ...
+        }).catch(function(error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        // The email of the user's account used.
+        var email = error.email;
+        // The firebase.auth.AuthCredential type that was used.
+        var credential = error.credential;
+        // ...
+        });
+      }
   </script>
-  <script type="text/javascript" src="index.js"></script>
 </html>

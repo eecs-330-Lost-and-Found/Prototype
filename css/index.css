@@ -130,3 +130,7 @@ button {
     width: 220px;
   }
 }
+
+#firebaseui-auth-container {
+  margin-top: 100px;
+}

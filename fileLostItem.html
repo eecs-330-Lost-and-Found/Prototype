@@ -1,0 +1,126 @@
+﻿<!DOCTYPE html>
+
+<html>
+  <title>LostNFound - File Lost Item</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="css/index.css" />
+  <link
+    href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans|Karla&display=swap"
+    rel="stylesheet"
+  />
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+  <body>
+      <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+
+    <header>
+      <h1>LostNFound</h1>
+      <h2>File a Lost Item</h2>
+      
+    </header>
+    
+    <form>
+      <div id="text-fields">
+        <div class="form-field">
+          <label class="form-label">Item Name:</label>
+          <input
+            class="text-input form-input"
+            type="text"
+            placeholder="Enter Item Name"
+            required
+          />
+        </div>
+
+        <div class="form-field">
+          <label class="form-label">Item Category:</label>
+          <select id="category-select" class="form-input">
+            <option value="electronics">electronics</option>
+            <option value="wallets">wallets</option>
+            <option value="jewelry">jewelry</option>
+            <option value="school supplies">school supplies</option>
+            <option value="others">others</option>
+          </select>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label">Location Last Seen:</label>
+          <input
+            class="text-input form-input"
+            type="text"
+            placeholder="Enter Address"
+            required
+          />
+        </div>
+
+        <div class="form-field">
+          <label class="form-label">Radius (from location):</label>
+          <span id="radius-radio">
+            <input type="radio" name="radius" value="exact" />
+            <label>Address is exact</label>
+            <input type="radio" name="radius" value="0.1" />
+            <label>0.1 mi</label>
+            <input type="radio" name="radius" value="0.25" />
+            <label>0.25 mi</label>
+            <input type="radio" name="radius" value="0.5" />
+            <label>0.5 mi</label>
+            <input type="radio" name="radius" value="1" />
+            <label>1 mi</label>
+          </span>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label">Date Lost:</label>
+          <input
+            id="date-input"
+            class="text-input form-input"
+            type="text"
+            placeholder="YYYY-MM-dd"
+            required
+          />
+        </div>
+        <div id="date-error">
+          Please enter correct date format (ex. 2020-02-20)
+        </div>
+
+        <div class="form-field">
+          <label class="form-label">Reward:</label>
+          <input
+            id="reward-input"
+            class="text-input form-input"
+            type="text"
+            placeholder="Enter reward amount ($)"
+            required
+          />
+        </div>
+        <div id="reward-error">
+          Please enter correct currency format (ex. 29, 29.7, 29.70)
+        </div>
+      </div>
+
+      <aside id="image-area">
+        <div class="form-field">
+          <label class="form-label">Upload Image:</label>
+          <span>
+            <button type="button" onclick="clickFileUpload()">
+              Upload
+            </button>
+            <input id="file-upload" type="file" accept="image/*" />
+          </span>
+        </div>
+        <div class="image-viewer"></div>
+      </aside>
+
+      <button id="submit" type="submit">
+        Submit
+      </button>
+    </form>
+  </body>
+
+  <script>
+    const clickFileUpload = e => {
+      document.querySelector("#file-upload").click();
+    };
+  </script>
+  <script type="text/javascript" src="index.js"></script>
+</html>
