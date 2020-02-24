@@ -1,0 +1,62 @@
+body{
+    font-family: Karla;
+    margin: 0px;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 100px auto;
+    grid-template-areas:
+    "top"
+    "main";
+    height: 100vh;
+}
+
+header {
+    display: flex;
+    grid-area: top;
+    background-color: navy;
+    padding-left: 30px;
+    align-items: center;
+  }
+
+header h1 {
+
+  color: papayawhip;
+  /* margin: 0px; */
+  font-family: Karla;
+}
+
+p {
+    display: none;
+}
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 100px;
+    margin: 30px;
+  }
+
+.form-field .form-label {
+    font-weight: 100;
+    font-size: 20px;
+    margin:10px;
+
+  }
+
+.form-field .text_input {
+    font-family: IBM Plex Sans;
+    font-size: 20px;
+    width: 380px;
+    height: 40px;
+    margin-bottom: 30px;
+  }
+
+  .form-field button,
+  #submit {
+    padding:20px;
+    font-size: large;
+
+  }
+
