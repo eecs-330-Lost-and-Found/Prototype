@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 
 <html>
   <title>LostNFound - File Lost Item</title>
@@ -9,26 +9,51 @@
     href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans|Karla&display=swap"
     rel="stylesheet"
   />
+
   <body>
     <header>
       <h1>LostNFound</h1>
+      <h2>File a Lost Item</h2>
     </header>
 
     <form>
       <div id="text-fields">
         <div class="form-field">
-          <label class="form-label">Location Last Seen:</label>
-          <span>
-            <input class="text-input" type="text" placeholder="Enter Address" />
-    
-          </span>
+          <label class="form-label">Item Name:</label>
+          <input
+            class="text-input form-input"
+            type="text"
+            placeholder="Enter Item Name"
+            required
+          />
         </div>
 
         <div class="form-field">
-          <label class="form-label">Radius:</label>
-          <span>
+          <label class="form-label">Item Category:</label>
+          <select id="category-select" class="form-input">
+            <option value="electronics">electronics</option>
+            <option value="wallets">wallets</option>
+            <option value="jewelry">jewelry</option>
+            <option value="school supplies">school supplies</option>
+            <option value="others">others</option>
+          </select>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label">Location Last Seen:</label>
+          <input
+            class="text-input form-input"
+            type="text"
+            placeholder="Enter Address"
+            required
+          />
+        </div>
+
+        <div class="form-field">
+          <label class="form-label">Radius (from location):</label>
+          <span id="radius-radio">
             <input type="radio" name="radius" value="exact" />
-            <label>Exact Location</label>
+            <label>Address is exact</label>
             <input type="radio" name="radius" value="0.1" />
             <label>0.1 mi</label>
             <input type="radio" name="radius" value="0.25" />
@@ -42,63 +67,56 @@
 
         <div class="form-field">
           <label class="form-label">Date Lost:</label>
-          <span>
-            <input
-              class="text-input"
-              type="text"
-              placeholder="YYYY/MM/dd/HH:mm"
-            />
-            
-          </span>
+          <input
+            id="date-input"
+            class="text-input form-input"
+            type="text"
+            placeholder="YYYY-MM-dd"
+            required
+          />
         </div>
-
-        <div class="form-field">
-          <label class="form-label">Item Name:</label>
-          <span>
-            <input
-              class="text-input"
-              type="text"
-              placeholder="Enter Item Name"
-            />
-            
-          </span>
-        </div>
-
-        <div class="form-field">
-          <label class="form-label">Item Categories:</label>
-          <span>
-            <input
-              class="text-input"
-              type="text"
-              placeholder="Choose Item Categories"
-            />
-            
-          </span>
+        <div id="date-error">
+          Please enter correct date format (ex. 2020-02-20)
         </div>
 
         <div class="form-field">
           <label class="form-label">Reward:</label>
-          <span>
-            <input class="text-input" type="text" placeholder="$" />
-            
-          </span>
+          <input
+            id="reward-input"
+            class="text-input form-input"
+            type="text"
+            placeholder="Enter reward amount ($)"
+            required
+          />
+        </div>
+        <div id="reward-error">
+          Please enter correct currency format (ex. 29, 29.7, 29.70)
         </div>
       </div>
 
-      <aside id="images">
+      <aside id="image-area">
         <div class="form-field">
-          <label class="form-label">Upload Images:</label>
+          <label class="form-label">Upload Image:</label>
           <span>
-            <button onclick="clickFileUpload()">Upload</button>
-            <input id="file-upload" type="file" accept="image/*" multiple />
+            <button type="button" onclick="clickFileUpload()">
+              Upload
+            </button>
+            <input id="file-upload" type="file" accept="image/*" />
           </span>
         </div>
-        <button id="submit" type="submit">Submit</button>
+        <div class="image-viewer"></div>
       </aside>
+
+      <button id="submit" type="submit">
+        Submit
+      </button>
     </form>
   </body>
+
   <script>
-    const clickFileUpload = () =>
+    const clickFileUpload = e => {
       document.querySelector("#file-upload").click();
+    };
   </script>
+  <script type="text/javascript" src="index.js"></script>
 </html>
