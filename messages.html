@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+
+
+  <title>LostNFound - File Lost Item</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="css/messages.css" />
+  <link
+    href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans|Karla&display=swap"
+    rel="stylesheet"
+  />
+
+  <body>
+      <header>
+          <h1>LostNFound</h1>
+          <h2>Incoming message</h2>
+      </header>
+
+      <form>
+          <div id="nav">
+
+              <h3>Message box</h3>
+
+              <select id="sort" onchange="sort1()"> 
+                  <option value="date">Sort by Date</option>
+                  <option value="name">Sort by Name</option>
+              </select>
+
+              <p id="message1" for="comment" class="required" onclick="message1()">Message1<br />from joker</p>
+              <p id="message2" for="comment" class="required" onclick="message2()">Message2<br />from kkkk</p>
+              <p id="message3" for="comment" class="required" onclick="message3()">Message3<br />from david</p>
+
+          </div>
+          
+
+          <div id="respond">
+
+
+
+              <form id="commentform">
+
+                  <p for="comment">Message</p>
+                  <p id="messagearea" name="comment" rows="10" tabindex="4"></p>
+
+                  <p for="comment">Reply</p>
+                  <p id="replyarea" name="comment" rows="10" tabindex="4"></p>
+
+
+                  <h3>Leave a Comment</h3>
+
+                  <label for="comment_author" class="required">Your name<br /></label>    
+                  <label for="anonymous">anonymous</label>
+                  <input id="anonymous" type="checkbox">
+                  <input type="text" name="comment_author" id="comment_author" tabindex="1" required="required">
+
+                  <label for="comment" class="required">Your message</label>
+                  <textarea name="comment" id="comment" rows="10" tabindex="4" required="required"></textarea>
+
+                  <button id="submit" name="submit" type="button">Submit comment</button>
+              </form>
+          </div>
+      </form>
+  </body>
+   
+  <script type="text/javascript" src="messages.js"></script>
+</html>

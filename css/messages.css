@@ -1,0 +1,141 @@
+body {
+    font-family: IBM Plex Sans;
+    margin: 0px;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 100px auto;
+    grid-template-areas: "top" 
+                         "main";
+    height: 100vh;
+}
+
+header {
+    display: flex;
+    grid-area: top;
+    background-color: navy;
+    padding-left: 30px;
+    align-items: center;
+}
+
+    header h1 {
+        color: papayawhip;
+        margin: 0px;
+        font-family: Karla;
+    }
+
+    header h2 {
+        color: papayawhip;
+        margin-left: 20px;
+        font-family: Karla;
+    }
+
+form {
+    grid-area: main;
+    display: grid;
+    grid-template-columns: 20% auto;
+    grid-template-rows: auto;
+    grid-template-areas: "left right";
+}
+
+#nav {
+    grid-area :left;
+    margin-top: 5px;
+    margin-left: 20px;
+}
+    #nav #message1 {
+        margin-top: 40px;
+        margin-right: 200px;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    #nav #message2 {
+        margin-top: 40px;
+        margin-right: 200px;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    #nav #message3 {
+        margin-top: 40px;
+        margin-right: 200px;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+#respond {
+    margin-top: 40px;
+    grid-area: right;
+}
+    #respond #messagearea {
+        margin-bottom: 10px;
+        margin-right: 20px;
+        display: block;
+        width: 80%;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        -o-border-radius: 5px;
+        -ms-border-radius: 5px;
+        -khtml-border-radius: 5px;
+        border-radius: 5px;
+        line-height: 1.4em;
+    }
+    #respond #replyarea {
+        margin-bottom: 10px;
+        margin-right: 20px;
+        display: block;
+        width: 80%;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        -o-border-radius: 5px;
+        -ms-border-radius: 5px;
+        -khtml-border-radius: 5px;
+        border-radius: 5px;
+        line-height: 1.4em;
+    }
+
+    #respond input[type='text'],
+    #respond input[type='email'],
+    #respond textarea {
+        margin-bottom: 10px;
+        margin-right:20px;
+        display: block;
+        width: 80%;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        -o-border-radius: 5px;
+        -ms-border-radius: 5px;
+        -khtml-border-radius: 5px;
+        border-radius: 5px;
+        line-height: 1.4em;
+    }
+
+#posts-list.has-comments li.no-comments {
+    display: none;
+}
+
+@media screen and (max-width: 1100px) {
+    form {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+
+    #text-fields {
+        padding-bottom: 0px;
+    }
+
+    #images {
+        padding-top: 0px;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    #radius-radio {
+        width: 220px;
+    }
+}
+
+#firebaseui-auth-container {
+    margin-top: 100px;
+}
