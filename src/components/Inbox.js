@@ -2,7 +2,6 @@ import React from "react";
 import { Container, Row, Col, ListGroup, Tab, Image } from "react-bootstrap";
 import Messages from "./Messages";
 
-// Add sorting mechanism (as on the original HTML page)
 const Inbox = ({ user, listings }) => {
   if (!user) {
     return <Container fluid>Please log in to view your inbox.</Container>;
