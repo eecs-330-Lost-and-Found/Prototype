@@ -1,7 +1,8 @@
 import React from "react";
+import { Container } from "react-bootstrap";
 
 const FileItem = () => {
-  return <div>Page coming soon!</div>;
+  return <Container fluid>Page coming soon!</Container>;
 };
 
 export default FileItem;
