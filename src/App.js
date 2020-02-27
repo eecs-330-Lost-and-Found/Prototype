@@ -30,15 +30,14 @@ const db = firebase.database().ref();
 
 const App = () => {
   const [user, setUser] = useState(null);
-  const [authHandlerCalled, setAuthStateHandlerCalled] = useState(false);
-  const [listings, setListings] = useState(false);
-
-  firebase.auth().onAuthStateChanged(user => {
-    setUser(user);
-    setAuthStateHandlerCalled(true);
-  });
+  const [initialRender, setInitialRender] = useState(true);
+  const [listings, setListings] = useState([]);
 
   useEffect(() => {
+    firebase.auth().onAuthStateChanged(user => {
+      setUser(user);
+      setInitialRender(false);
+    });
     const handleData = snap => {
       if (snap.val()) {
         setListings(snap.val().listings);
@@ -48,18 +47,20 @@ const App = () => {
   }, []);
 
   return (
-    <Router>
-      {authHandlerCalled && <Banner user={user} />}
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <Route path="/file-item" component={FileItem} />
-        <Route path="/login" component={Login} />
-        <Route
-          path="/inbox"
-          render={() => <Inbox user={user} listings={listings} />}
-        />
-      </Switch>
-    </Router>
+    !initialRender && (
+      <Router>
+        <Banner user={user} />
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route path="/file-item" component={FileItem} />
+          <Route path="/login" component={Login} />
+          <Route
+            path="/inbox"
+            render={() => <Inbox user={user} listings={listings} />}
+          />
+        </Switch>
+      </Router>
+    )
   );
 };
 

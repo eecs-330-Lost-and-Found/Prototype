@@ -10,7 +10,13 @@ const Login = () => {
       firebase.auth.GoogleAuthProvider.PROVIDER_ID,
       firebase.auth.EmailAuthProvider.PROVIDER_ID
     ],
-    signInSuccessUrl: "/inbox"
+    signInSuccessUrl: "/inbox",
+    callbacks: {
+      signInSuccessWithAuthResult: () => {
+        alert("Successfully logged in.");
+        return true;
+      }
+    }
   };
 
   return (

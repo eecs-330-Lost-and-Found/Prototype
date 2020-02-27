@@ -1,10 +1,15 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Container, Row, Col, ListGroup, Tab, Image } from "react-bootstrap";
 import Messages from "./Messages";
 
 const Inbox = ({ user, listings }) => {
   if (!user) {
-    return <Container fluid>Please log in to view your inbox.</Container>;
+    return (
+      <Container fluid>
+        Please <Link to="/login">log in</Link> to view your inbox.
+      </Container>
+    );
   }
   const userListings = Object.values(listings).filter(
     listing => listing.owner === user.email
