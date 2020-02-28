@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+
+<html>
+  <title>LostNFound - File Lost Item</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="css/home.css" />
+  <link
+    href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans|Karla&display=swap"
+    rel="stylesheet"
+  />
+  <body>
+    <header>
+      <h1>LostNFound   </h1>
+      <h2>        Home page</h2>
+      <h3 id="user_name"></h3>
+      <button type="button" id="log_button" class="btn btn-link">Log out</button>
+    </header>
+
+    <form>
+      <div id="text-fields">
+        <div class="form-field">
+          <label class="form-label">Location Last Seen:</label>
+          <span>
+            <input class="text-input" type="text" placeholder="Enter Address" />
+            <button class="clear">Clear</button>
+          </span>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label">Radius:</label>
+          <span>
+            <input type="radio" name="radius" value="exact" />
+            <label>Exact Location</label>
+            <input type="radio" name="radius" value="0.1" />
+            <label>0.1 mi</label>
+            <input type="radio" name="radius" value="0.25" />
+            <label>0.25 mi</label>
+            <input type="radio" name="radius" value="0.5" />
+            <label>0.5 mi</label>
+            <input type="radio" name="radius" value="1" />
+            <label>1 mi</label>
+          </span>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label">Date Lost:</label>
+          <span>
+            <input
+              class="text-input"
+              type="text"
+              placeholder="YYYY/MM/dd/HH:mm"
+            />
+            <button class="clear">Clear</button>
+          </span>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label">Item Name:</label>
+          <span>
+            <input
+              class="text-input"
+              type="text"
+              placeholder="Enter Item Name"
+            />
+            <button class="clear">Clear</button>
+          </span>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label">Item Categories:</label>
+          <span>
+            <input
+              class="text-input"
+              type="text"
+              placeholder="Choose Item Categories"
+            />
+            <button class="clear">Clear</button>
+          </span>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label">Reward:</label>
+          <span>
+            <input id="money-input" class="text-input" type="text" placeholder="$" />
+            <div id="money-error">Please enter correct currency format (ex. 29, 29.7, 29.70)</div>
+            <button class="clear">Clear</button>
+          </span>
+        </div>
+      </div>
+
+      <aside id="images">
+        <div class="form-field">
+          <label class="form-label">Upload Images:</label>
+          <span>
+            <button onclick="clickFileUpload()">Upload</button>
+            <input id="file-upload" type="file" accept="image/*" multiple />
+          </span>
+        </div>
+        <button id="submit" type="submit">Submit</button>
+      </aside>
+    </form>
+  </body>
+  <script>
+    const clickFileUpload = () =>
+      document.querySelector("#file-upload").click();
+  </script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="bootstrap-4.4.1-dist/js/bootstrap.min.js"></script>
+  
+
+  <script type="text/javascript" src="home.js"></script>
+</html>
