@@ -51,7 +51,7 @@ const App = () => {
       <Router>
         <Banner user={user} />
         <Switch>
-          <Route exact path="/" component={Home} />
+          <Route exact path="/" render={() => <Home listings={listings} />} />
           <Route path="/file-item" component={FileItem} />
           <Route path="/login" component={Login} />
           <Route
