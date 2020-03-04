@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { Container, Row, Col, Form, Card, Button } from "react-bootstrap";
 
 const Home = ({ listings }) => {
@@ -53,14 +54,16 @@ const Home = ({ listings }) => {
         </Col>
         <Col xs={12} sm={8} md={8}>
           <Row>
-            {viewableListings.map(listing => (
+            {viewableListings.map((listing, i) => (
               <Col xs={12} sm={6} md={6} lg={4}>
-                <Card>
-                  <Card.Img variant="top" src={listing.image} />
-                  <Card.Body>
-                    <Card.Text>{listing.name}</Card.Text>
-                  </Card.Body>
-                </Card>
+                <Link to={`/confirm/${i}`}>
+                  <Card>
+                    <Card.Img variant="top" src={listing.image} />
+                    <Card.Body>
+                      <Card.Text>{listing.name}</Card.Text>
+                    </Card.Body>
+                  </Card>
+                </Link>
               </Col>
             ))}
           </Row>

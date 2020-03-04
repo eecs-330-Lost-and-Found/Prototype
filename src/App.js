@@ -4,6 +4,7 @@ import Banner from "./components/Banner";
 import Login from "./components/Login";
 import Inbox from "./components/Inbox";
 import FileItem from "./components/FileItem";
+import ConfirmItem from "./components/ConfirmItem";
 import Home from "./components/Home";
 
 // CSS imports
@@ -52,6 +53,10 @@ const App = () => {
         <Banner user={user} />
         <Switch>
           <Route exact path="/" render={() => <Home listings={listings} />} />
+          <Route
+            path="/confirm/:id"
+            render={() => <ConfirmItem listings={listings} />}
+          />
           <Route path="/file-item" component={FileItem} />
           <Route path="/login" component={Login} />
           <Route
