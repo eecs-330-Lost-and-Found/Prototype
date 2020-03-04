@@ -15,6 +15,7 @@ import "./styles/App.css";
 import firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/database";
+import "firebase/storage";
 const firebaseConfig = {
   apiKey: "AIzaSyCOFVnjXdYG_ugQxFjoSIjKM7959nm_GFE",
   authDomain: "hcilogin.firebaseapp.com",
@@ -27,7 +28,8 @@ const firebaseConfig = {
 };
 
 firebase.initializeApp(firebaseConfig);
-const db = firebase.database().ref();
+export const db = firebase.database().ref();
+export const storage = firebase.storage().ref();
 
 const App = () => {
   const [user, setUser] = useState(null);
@@ -55,7 +57,7 @@ const App = () => {
           <Route exact path="/" render={() => <Home listings={listings} />} />
           <Route
             path="/confirm/:id"
-            render={() => <ConfirmItem listings={listings} />}
+            render={() => <ConfirmItem user={user} listings={listings} />}
           />
           <Route path="/file-item" component={FileItem} />
           <Route path="/login" component={Login} />

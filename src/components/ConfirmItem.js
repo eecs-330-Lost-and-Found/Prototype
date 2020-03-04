@@ -6,23 +6,59 @@ import {
   Image,
   Form,
   Button,
-  Card
+  Card,
+  Spinner
 } from "react-bootstrap";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import ImageUploader from "react-images-upload";
+import { db, storage } from "../App";
 
-const ConfirmItem = ({ listings }) => {
+const ConfirmItem = ({ user, listings }) => {
   const { id } = useParams();
+  const history = useHistory();
   const [listing, setListing] = useState({});
+  const [description, setDescription] = useState("");
   const [image, setImage] = useState("");
+  const [showSpinner, setShowSpinner] = useState(false);
   useEffect(() => {
     if (listings.length > parseInt(id)) {
       setListing(listings[id]);
     }
   }, [listings, id]);
 
+  const handleDescription = e => {
+    setDescription(e.target.value);
+  };
+
   const handleImageUpload = images => {
     setImage(images[0]);
+  };
+
+  const handleSubmit = async () => {
+    if (!user) {
+      return alert("Log in before confirming that you found a lost item.");
+    } else if (description.length < 30) {
+      return alert("Ensure your description is at least 30 characters.");
+    } else if (!image) {
+      return alert("Please include a photo of the item you found.");
+    }
+    const imageRef = storage.child(`images/${image.name}`);
+    setShowSpinner(true);
+    const snapshot = await imageRef.put(image);
+    const downloadUrl = await snapshot.ref.getDownloadURL();
+    const message = {
+      date_created: new Date().toLocaleDateString(),
+      description,
+      image: downloadUrl,
+      email: user.email
+    };
+    db.child(`listings/${id}`).update({
+      ...listing,
+      messages: [...listing.messages, message]
+    });
+    setShowSpinner(false);
+    alert(`Successfully Added!`);
+    history.push("/");
   };
 
   return Object.keys(listing).length ? (
@@ -41,7 +77,7 @@ const ConfirmItem = ({ listings }) => {
           <hr></hr>
           <Form.Group>
             <Form.Label>Describe the Item You Found:</Form.Label>
-            <Form.Control rows="5" as="textarea" />
+            <Form.Control rows="5" as="textarea" onChange={handleDescription} />
           </Form.Group>
           <Row>
             <Col xs={12} sm={6} md={5} lg={3}>
@@ -58,7 +94,10 @@ const ConfirmItem = ({ listings }) => {
                 imgExtension={[".jpg", ".gif", ".png", ".gif"]}
                 singleImage={true}
               />
-              <Button style={{ float: "right" }}>Notify Owner</Button>
+              {showSpinner && <Spinner animation="border" />}
+              <Button style={{ float: "right" }} onClick={handleSubmit}>
+                Notify Owner
+              </Button>
             </Col>
           </Row>
         </Col>
