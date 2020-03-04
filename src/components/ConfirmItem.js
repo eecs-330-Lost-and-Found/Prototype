@@ -75,8 +75,11 @@ const ConfirmItem = ({ user, listings }) => {
           <div>Location Lost: {listing.location}</div>
           <div>Owner: {listing.owner}</div>
           <hr></hr>
+          <h5>Did you find this item?</h5>
           <Form.Group>
-            <Form.Label>Describe the Item You Found:</Form.Label>
+            <Form.Label>
+              Confirm your finding by describing what you found:
+            </Form.Label>
             <Form.Control rows="5" as="textarea" onChange={handleDescription} />
           </Form.Group>
           <Row>
