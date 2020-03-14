@@ -12,6 +12,7 @@ const Inbox = ({ user, listings }) => {
       </Container>
     );
   }
+
   const userListings = listings.filter(
     ([id, listing]) => listing.owner === user.email
   );
@@ -19,12 +20,14 @@ const Inbox = ({ user, listings }) => {
   return (
     <Container fluid>
       <h1>Inbox</h1>
-      <div className="item-count">
-        You have posted {userListings.length} lost item(s):
-      </div>
-      <Tab.Container defaultActiveKey="#0">
+      <Tab.Container
+        defaultActiveKey={userListings.length ? `#${userListings[0][0]}` : null}
+      >
         <Row>
           <Col lg={3}>
+            <div className="item-count">
+              You have posted {userListings.length} lost item(s):
+            </div>
             <ListGroup variant="flush">
               {userListings.map(([id, listing]) => (
                 <ListGroup.Item action key={id} href={`#${id}`}>

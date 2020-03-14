@@ -90,9 +90,9 @@ const FileItem = ({ user }) => {
     const downloadUrl = await snapshot.ref.getDownloadURL();
     const data = {
       ...formData,
+      reward: parseInt(formData.reward),
       image: downloadUrl,
-      owner: user.email,
-      messages: []
+      owner: user.email
     };
     await db.child(`listings/${id}`).update(data);
     setShowSpinner(false);
@@ -178,7 +178,7 @@ const FileItem = ({ user }) => {
           />
           {image ? (
             <Card.Img
-              style={{ width: "270px", height: "270px" }}
+              style={{ width: "260px", height: "260px", objectFit: "cover" }}
               alt=""
               src={URL.createObjectURL(image)}
             />

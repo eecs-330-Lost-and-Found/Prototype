@@ -42,8 +42,7 @@ const ConfirmItem = ({ user, listings }) => {
     } else if (!image) {
       return alert("Please include a photo of the item you found.");
     }
-    const id = shortid.generate();
-    const imageRef = storage.child(`images/${id}`);
+    const imageRef = storage.child(`images/${shortid.generate()}`);
     setShowSpinner(true);
     const snapshot = await imageRef.put(image);
     const downloadUrl = await snapshot.ref.getDownloadURL();
@@ -53,10 +52,9 @@ const ConfirmItem = ({ user, listings }) => {
       image: downloadUrl,
       email: user.email
     };
-    db.child(`listings/${id}`).update({
-      ...listing,
-      messages: [...listing.messages, message]
-    });
+    const messages = listing.messages ? listing.messages : [];
+    messages.push(message);
+    db.child(`listings/${id}`).update({ ...listing, messages });
     setShowSpinner(false);
     alert(`Successfully Added!`);
     history.push("/");
@@ -92,7 +90,7 @@ const ConfirmItem = ({ user, listings }) => {
                 withIcon={true}
                 buttonText="Choose image"
                 onChange={handleImageUpload}
-                imgExtension={[".jpg", ".gif", ".png", ".gif"]}
+                imgExtension={[".jpg", ".gif", ".png", ".jpeg"]}
                 singleImage={true}
               />
               {showSpinner && <Spinner animation="border" />}
