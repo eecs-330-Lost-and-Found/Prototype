@@ -8,7 +8,7 @@ const Home = ({ listings }) => {
     "School Supplies",
     "Jewelry",
     "Wallet",
-    "Others"
+    "Other"
   ];
   const [viewableListings, setViewableListings] = useState([]);
   const [categories, setCategories] = useState([]);
