@@ -11,6 +11,7 @@ import {
 } from "react-bootstrap";
 import { useParams, useHistory } from "react-router-dom";
 import ImageUploader from "react-images-upload";
+import shortid from "shortid";
 import { db, storage } from "../App";
 
 const ConfirmItem = ({ user, listings }) => {
@@ -21,9 +22,8 @@ const ConfirmItem = ({ user, listings }) => {
   const [image, setImage] = useState("");
   const [showSpinner, setShowSpinner] = useState(false);
   useEffect(() => {
-    if (listings.length > parseInt(id)) {
-      setListing(listings[id]);
-    }
+    const listingInfo = listings.find(listingInfo => id === listingInfo[0]);
+    if (listingInfo) setListing(listingInfo[1]);
   }, [listings, id]);
 
   const handleDescription = e => {
@@ -42,7 +42,8 @@ const ConfirmItem = ({ user, listings }) => {
     } else if (!image) {
       return alert("Please include a photo of the item you found.");
     }
-    const imageRef = storage.child(`images/${image.name}`);
+    const id = shortid.generate();
+    const imageRef = storage.child(`images/${id}`);
     setShowSpinner(true);
     const snapshot = await imageRef.put(image);
     const downloadUrl = await snapshot.ref.getDownloadURL();

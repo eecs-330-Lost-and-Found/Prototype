@@ -11,8 +11,8 @@ const Inbox = ({ user, listings }) => {
       </Container>
     );
   }
-  const userListings = Object.values(listings).filter(
-    listing => listing.owner === user.email
+  const userListings = listings.filter(
+    ([id, listing]) => listing.owner === user.email
   );
 
   return (
@@ -22,8 +22,8 @@ const Inbox = ({ user, listings }) => {
         <Row>
           <Col lg={4}>
             <ListGroup variant="flush">
-              {userListings.map((listing, i) => (
-                <ListGroup.Item action key={i} href={`#${i}`}>
+              {userListings.map(([id, listing]) => (
+                <ListGroup.Item action key={id} href={`#${id}`}>
                   Item - {listing.name}
                 </ListGroup.Item>
               ))}
@@ -31,8 +31,8 @@ const Inbox = ({ user, listings }) => {
           </Col>
           <Col lg={8}>
             <Tab.Content>
-              {userListings.map((listing, i) => (
-                <Tab.Pane key={i} eventKey={`#${i}`}>
+              {userListings.map(([id, listing]) => (
+                <Tab.Pane key={id} eventKey={`#${id}`}>
                   <h3>{listing.name}</h3>
                   <div>
                     <Image
@@ -46,7 +46,7 @@ const Inbox = ({ user, listings }) => {
                   <div>Reward: ${listing.reward}</div>
                   <hr />
                   <h4 style={{ marginBottom: "20px" }}>Incoming Messages</h4>
-                  <Messages messages={listing.messages} />
+                  {listing.messages && <Messages messages={listing.messages} />}
                 </Tab.Pane>
               ))}
             </Tab.Content>

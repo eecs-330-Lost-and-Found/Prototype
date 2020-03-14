@@ -43,7 +43,7 @@ const App = () => {
     });
     const handleData = snap => {
       if (snap.val()) {
-        setListings(snap.val().listings);
+        setListings(Object.entries(snap.val().listings));
       }
     };
     db.on("value", handleData, error => alert(error));
@@ -59,7 +59,7 @@ const App = () => {
             path="/confirm/:id"
             render={() => <ConfirmItem user={user} listings={listings} />}
           />
-          <Route path="/file-item" component={FileItem} />
+          <Route path="/file-item" render={() => <FileItem user={user} />} />
           <Route path="/login" component={Login} />
           <Route
             path="/inbox"

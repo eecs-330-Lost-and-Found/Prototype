@@ -29,7 +29,7 @@ const Home = ({ listings }) => {
     if (!categories.length) {
       setViewableListings(listings);
     } else {
-      const filteredListings = listings.filter(listing =>
+      const filteredListings = listings.filter(([id, listing]) =>
         categories.includes(listing.category)
       );
       setViewableListings(filteredListings);
@@ -54,9 +54,9 @@ const Home = ({ listings }) => {
         </Col>
         <Col xs={12} sm={8} md={8}>
           <Row>
-            {viewableListings.map((listing, i) => (
+            {viewableListings.map(([id, listing]) => (
               <Col xs={12} sm={6} md={6} lg={4}>
-                <Link to={`/confirm/${i}`}>
+                <Link to={`/confirm/${id}`}>
                   <Card>
                     <Card.Img variant="top" src={listing.image} />
                     <Card.Body>
