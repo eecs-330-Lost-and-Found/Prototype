@@ -1,0 +1,12 @@
+.description-col {
+  text-align: right;
+}
+
+.login-description {
+  margin-top: 27px;
+}
+
+.auth-col {
+  display: flex;
+  flex-direction: row;
+}

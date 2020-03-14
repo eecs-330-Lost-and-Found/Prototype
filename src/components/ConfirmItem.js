@@ -66,21 +66,18 @@ const ConfirmItem = ({ user, listings }) => {
     <Container fluid>
       <Row>
         <Col xs={12} sm={6} lg={4}>
-          <h5>Photo of lost item:</h5>
           <Image src={listing.image} fluid></Image>
         </Col>
         <Col xs={12} sm={6} lg={8}>
-          <h4>{listing.name}</h4>
-          <h6>Reward: ${listing.reward}</h6>
+          <h3>{listing.name}</h3>
+          <h5>Reward: ${listing.reward}</h5>
           <div>Date Lost: {listing.date_lost}</div>
           <div>Location Lost: {listing.location}</div>
           <div>Owner: {listing.owner}</div>
           <hr></hr>
           <h5>Did you find this item?</h5>
           <Form.Group>
-            <Form.Label>
-              Confirm your finding by describing what you found:
-            </Form.Label>
+            <Form.Label>Describe your finding:</Form.Label>
             <Form.Control rows="5" as="textarea" onChange={handleDescription} />
           </Form.Group>
           <Row>
@@ -90,7 +87,7 @@ const ConfirmItem = ({ user, listings }) => {
               ) : null}
             </Col>
             <Col xs={12} sm={6} md={7} lg={9}>
-              Add a photo of the item you found:
+              Upload photo of finding:
               <ImageUploader
                 withIcon={true}
                 buttonText="Choose image"

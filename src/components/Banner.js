@@ -21,12 +21,13 @@ const Banner = ({ user }) => {
   return (
     <Navbar className="justify-content-between" bg="primary" variant="dark">
       <Navbar.Collapse>
-        <Navbar.Brand>LostNFound</Navbar.Brand>
+        <Navbar.Brand>
+          <Link className="logo-link" to="/">
+            LostNFound
+          </Link>
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Nav id="page-nav" className="mr-auto">
-          <Navbar.Text className="nav-text">
-            <Link to="/">Home</Link>
-          </Navbar.Text>
           <Navbar.Text className="nav-text">
             <Link to="/inbox">Inbox</Link>
           </Navbar.Text>
@@ -39,7 +40,9 @@ const Banner = ({ user }) => {
             </Link>
           ) : (
             <span className="auth-control">
-              <Navbar.Text className="nav-text">{user.displayName}</Navbar.Text>
+              <Navbar.Text className="nav-text username">
+                {user.displayName}
+              </Navbar.Text>
               <Button onClick={handleLogout} variant="outline-light">
                 Logout
               </Button>

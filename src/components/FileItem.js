@@ -108,10 +108,12 @@ const FileItem = ({ user }) => {
     <Container fluid>
       <Row>
         <Col sm={12} md={6}>
+          <h3>File a Lost Item</h3>
+          <hr />
           <Form.Group>
-            <Form.Label>Item name</Form.Label>
+            <Form.Label>Item Name</Form.Label>
             <Form.Control
-              placeholder="Item Name"
+              placeholder="(ex. Black iPhone 11 Pro)"
               onChange={handleChange("name")}
             />
           </Form.Group>
@@ -129,7 +131,7 @@ const FileItem = ({ user }) => {
             <Form.Label>Location Last Seen</Form.Label>
             <LocationPicker
               containerElement={<div style={{ height: "100%" }} />}
-              mapElement={<div style={{ height: "400px" }} />}
+              mapElement={<div style={{ height: "320px" }} />}
               defaultPosition={{ lat: 42.055984, lng: -87.675171 }}
               onChange={onPositionChange}
               zoom={15}
@@ -156,9 +158,9 @@ const FileItem = ({ user }) => {
             </Form.Control.Feedback>
           </Form.Group>
           <Form.Group>
-            <Form.Label>Reward</Form.Label>
+            <Form.Label>Reward ($)</Form.Label>
             <Form.Control
-              placeholder="Enter reward ($)"
+              placeholder="(ex. 30.75)"
               onChange={handleRewardChange}
               isInvalid={!isValidReward}
             />
@@ -176,12 +178,16 @@ const FileItem = ({ user }) => {
           />
           {image ? (
             <Card.Img
-              style={{ width: "300px" }}
+              style={{ width: "270px", height: "270px" }}
               alt=""
               src={URL.createObjectURL(image)}
             />
           ) : (
-            <Card.Img style={{ width: "300px" }} alt="" src={emptyImageURL} />
+            <Card.Img
+              style={{ width: "260px", height: "260px" }}
+              alt=""
+              src={emptyImageURL}
+            />
           )}
         </Col>
       </Row>

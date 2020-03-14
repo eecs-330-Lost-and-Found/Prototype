@@ -38,9 +38,11 @@ const Home = ({ listings }) => {
 
   return (
     <Container fluid>
+      <h2>Lost Items</h2>
+      <hr />
       <Row>
-        <Col xs={12} sm={4} md={4}>
-          <h4>Categories:</h4>
+        <Col xs={12} sm={4} md={3}>
+          <h5>Categories</h5>
           <div>
             {categoryNames.map(category => (
               <Form.Check
@@ -50,15 +52,21 @@ const Home = ({ listings }) => {
               />
             ))}
           </div>
-          <Button onClick={applyFilter}>Apply Filter</Button>
+          <Button style={{ margin: "10px 0px" }} onClick={applyFilter}>
+            Apply Filter
+          </Button>
         </Col>
-        <Col xs={12} sm={8} md={8}>
+        <Col xs={12} sm={8} md={9}>
           <Row>
             {viewableListings.map(([id, listing]) => (
-              <Col xs={12} sm={6} md={6} lg={4}>
+              <Col xs={12} sm={12} md={6} lg={4}>
                 <Link to={`/confirm/${id}`}>
                   <Card>
-                    <Card.Img variant="top" src={listing.image} />
+                    <Card.Img
+                      variant="top"
+                      style={{ height: "250px", objectFit: "cover" }}
+                      src={listing.image}
+                    />
                     <Card.Body>
                       <Card.Text>{listing.name}</Card.Text>
                     </Card.Body>

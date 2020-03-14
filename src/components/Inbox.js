@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Container, Row, Col, ListGroup, Tab, Image } from "react-bootstrap";
+import "../styles/Inbox.css";
 import Messages from "./Messages";
 
 const Inbox = ({ user, listings }) => {
@@ -18,18 +19,21 @@ const Inbox = ({ user, listings }) => {
   return (
     <Container fluid>
       <h1>Inbox</h1>
+      <div className="item-count">
+        You have posted {userListings.length} lost item(s):
+      </div>
       <Tab.Container defaultActiveKey="#0">
         <Row>
-          <Col lg={4}>
+          <Col lg={3}>
             <ListGroup variant="flush">
               {userListings.map(([id, listing]) => (
                 <ListGroup.Item action key={id} href={`#${id}`}>
-                  Item - {listing.name}
+                  {listing.name}
                 </ListGroup.Item>
               ))}
             </ListGroup>
           </Col>
-          <Col lg={8}>
+          <Col lg={9}>
             <Tab.Content>
               {userListings.map(([id, listing]) => (
                 <Tab.Pane key={id} eventKey={`#${id}`}>
