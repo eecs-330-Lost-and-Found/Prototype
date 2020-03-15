@@ -92,7 +92,6 @@ Component 2: Interactive Data Selection
 **Supported Task 2:** User logs in with an account that they have created and views the descriptions that finders have sent for their lost items. User emails one of the finders so that they can meet the finder and retrieve their lost item.
 
 <img src=https://raw.githubusercontent.com/eecs-330-Lost-and-Found/Prototype/project_8/assets/login-one.png width=400 />
-<img src=https://raw.githubusercontent.com/eecs-330-Lost-and-Found/Prototype/project_8/assets/login-two.png width=400 />
 <img src=https://raw.githubusercontent.com/eecs-330-Lost-and-Found/Prototype/project_8/assets/inbox.png width=800 />
 
 Component: User Profiles
