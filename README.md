@@ -1,4 +1,4 @@
-This repository is for **LostNFound**, a service which allows college students to post items that they have lost and ask others to find it for them.
+This repository is for **LostNFound**, a service which allows college students to post items that they have lost and ask others to help find them.
 
 <h2>Getting Started</h2>
 
