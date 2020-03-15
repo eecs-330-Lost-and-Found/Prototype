@@ -1,9 +1,10 @@
 This repository is for **LostNFound**, a service which allows college students to post items that they have lost and ask others to find it for them.
 
 <h2>Getting Started</h2>
+
 Repository: https://github.com/eecs-330-Lost-and-Found/Prototype<br>
 Deployment Link: https://hcilogin.firebaseapp.com/<br>
-Running on local server: Clone the repository, then run `npm install` and `npm start` from the root directory. Navigate to http://localhost:3000 to view the running app.
+Running on local server: Clone the repository, then run `npm install` and `npm start` from the root directory. Navigate to http://localhost:3000 to view the running app. Prototype is best viewed on Google Chrome on a Mac OS.
 
 In order to explore the full functionalities of the app right off the bat, log in as either of the following two users:
 
@@ -16,13 +17,15 @@ Email: janedoe@gmail.com<br>
 Password: lostnfound
 
 <h2>Problem and Related Work</h2>
-This project tackles a universal problem: humans are prone to error, and leave their belongings in the wrong places. A survey by Bluetooth tracking company Pebblebee revealed that the average American loses around $5,591 in their lifetime due to lost items.
+
+This project tackles a universal problem: humans are prone to error, and leave their belongings in the wrong places. A survey by Bluetooth tracking company Pebblebee revealed that the average American loses around \$5,591 in their lifetime due to lost items.
 
 Currently, the most popular options to find lost items involve attachable Bluetooth trackers. Apps like Chipolo and TrackR make use of this solution. However, users are still likely to lose items that he or she has not attached a tracker to, in which case such apps would not help. This solution also requires users to purchase hardware and charge or replace the batteries, thus lowering accessibility. Finally, when these items escape Bluetooth range (around 200ft), they cannot be tracked. Thus, while these apps are helpful in finding misplaced items in the house, they do not help users find items that are far away.
 
 Instead, LostNFound aims to connect those who have lost items with other “finders” so that they can easily regain possession of such items. When someone posts a lost item, he or she can include a bounty for finding that item, so that other users will be motivated to find the lost item. Unlike previous solutions, the app works for any lost item as it does not depend on external hardware such as Bluetooth trackers.
 
 <h2>User Research</h2>
+
 One the things we hoped to learn from our research is the level of trust that people have for other members of the Northwestern community. Through this, we would be able to gauge whether people would actually post lost items or not use our service at all because of the fear that their items would be stolen. We also hoped to learn what kind of reward would motivate them to return others’ lost items. Finally, we wanted to know whether a centralized lost and found (i.e., finders return lost items to a lost and found station) or a peer-to-peer lost and found (i.e., requester and finder meets up) would be more convenient. To learn about our target users’ preferences, we asked questions like:
 
 - If you posted a lost item and another Northwestern student or faculty member found it, would you trust them to return the item to you?
@@ -46,7 +49,8 @@ Some personas we envision using our app are:
 - John, a graduate student at Kellogg: John is somewhat careless and often forgets his belongings. For example, last week he left his water bottle at Blomquist after playing basketball. Another time, he left his wallet on the counter at a nearby bar. If his friends are available, he can ask them to find his lost items, but other times he must go back to the location himself. By the time he arrives there, however, the item is usually gone.
 
 <h2>Paper Prototyping</h2>
-<a href=https://drive.google.com/file/d/1NhJuVDhSRbpOmkBfSZNJ4Fash3h9DsdO/view?usp=sharing>Click here</a> to view our paper prototyping video.
+
+[Click here](https://drive.google.com/file/d/1NhJuVDhSRbpOmkBfSZNJ4Fash3h9DsdO/view?usp=sharing) to view our paper prototyping video.
 
 Some observations and usability problems from the paper prototype:
 
@@ -67,7 +71,7 @@ Directions to pursue based on observations from paper prototype:
 
 **Supported Task 1:** User posts a request for others to find their lost item, giving a monetary reward to anyone who is able to find it.
 
-File a Lost Item Page
+<img src=https://raw.githubusercontent.com/eecs-330-Lost-and-Found/Prototype/project_8/assets/file-lost-item.png width=800 />
 
 Component 1: Data Collection Form
 
@@ -87,9 +91,9 @@ Component 2: Interactive Data Selection
 
 **Supported Task 2:** User logs in with an account that they have created and views the descriptions that finders have sent for their lost items. User emails one of the finders so that they can meet the finder and retrieve their lost item.
 
-Create account / sign in workflow
-
-Inbox of messages from finders
+<img src=https://raw.githubusercontent.com/eecs-330-Lost-and-Found/Prototype/project_8/assets/login-one.png width=400 />
+<img src=https://raw.githubusercontent.com/eecs-330-Lost-and-Found/Prototype/project_8/assets/login-two.png width=400 />
+<img src=https://raw.githubusercontent.com/eecs-330-Lost-and-Found/Prototype/project_8/assets/inbox.png width=800 />
 
 Component: User Profiles
 
@@ -107,9 +111,8 @@ Component: User Profiles
 
 **Supported Task 3:** User finds a lost item that has been posted on the website, and contacts the owner with the details of what he/she has found.
 
-Homepage (catalog of lost items)
-
-Confirm finding of lost item
+<img src=https://raw.githubusercontent.com/eecs-330-Lost-and-Found/Prototype/project_8/assets/lost-items.png width=800 />
+<img src=https://raw.githubusercontent.com/eecs-330-Lost-and-Found/Prototype/project_8/assets/confirm-item.png width=800 />
 
 Component: Social Interaction
 
