@@ -7,7 +7,11 @@ const Messages = ({ messages }) => {
       {messages.map(message => (
         <Col xs={12} sm={6} md={6} lg={4}>
           <Card>
-            <Card.Img variant="top" src={message.image} />
+            <Card.Img
+              variant="top"
+              style={{ height: "250px", objectFit: "cover" }}
+              src={message.image}
+            />
             <Card.Body>
               <Card.Text>{message.description}</Card.Text>
               <Button

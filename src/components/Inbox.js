@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Container, Row, Col, ListGroup, Tab, Image } from "react-bootstrap";
+import "../styles/Inbox.css";
 import Messages from "./Messages";
 
 const Inbox = ({ user, listings }) => {
@@ -11,28 +12,34 @@ const Inbox = ({ user, listings }) => {
       </Container>
     );
   }
-  const userListings = Object.values(listings).filter(
-    listing => listing.owner === user.email
+
+  const userListings = listings.filter(
+    ([id, listing]) => listing.owner === user.email
   );
 
   return (
     <Container fluid>
       <h1>Inbox</h1>
-      <Tab.Container defaultActiveKey="#0">
+      <Tab.Container
+        defaultActiveKey={userListings.length ? `#${userListings[0][0]}` : null}
+      >
         <Row>
-          <Col lg={4}>
+          <Col lg={3}>
+            <div className="item-count">
+              You have posted {userListings.length} lost item(s):
+            </div>
             <ListGroup variant="flush">
-              {userListings.map((listing, i) => (
-                <ListGroup.Item action key={i} href={`#${i}`}>
-                  Item - {listing.name}
+              {userListings.map(([id, listing]) => (
+                <ListGroup.Item action key={id} href={`#${id}`}>
+                  {listing.name}
                 </ListGroup.Item>
               ))}
             </ListGroup>
           </Col>
-          <Col lg={8}>
+          <Col lg={9}>
             <Tab.Content>
-              {userListings.map((listing, i) => (
-                <Tab.Pane key={i} eventKey={`#${i}`}>
+              {userListings.map(([id, listing]) => (
+                <Tab.Pane key={id} eventKey={`#${id}`}>
                   <h3>{listing.name}</h3>
                   <div>
                     <Image
@@ -46,7 +53,7 @@ const Inbox = ({ user, listings }) => {
                   <div>Reward: ${listing.reward}</div>
                   <hr />
                   <h4 style={{ marginBottom: "20px" }}>Incoming Messages</h4>
-                  <Messages messages={listing.messages} />
+                  {listing.messages && <Messages messages={listing.messages} />}
                 </Tab.Pane>
               ))}
             </Tab.Content>

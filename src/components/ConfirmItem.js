@@ -11,6 +11,7 @@ import {
 } from "react-bootstrap";
 import { useParams, useHistory } from "react-router-dom";
 import ImageUploader from "react-images-upload";
+import shortid from "shortid";
 import { db, storage } from "../App";
 
 const ConfirmItem = ({ user, listings }) => {
@@ -21,9 +22,8 @@ const ConfirmItem = ({ user, listings }) => {
   const [image, setImage] = useState("");
   const [showSpinner, setShowSpinner] = useState(false);
   useEffect(() => {
-    if (listings.length > parseInt(id)) {
-      setListing(listings[id]);
-    }
+    const listingInfo = listings.find(listingInfo => id === listingInfo[0]);
+    if (listingInfo) setListing(listingInfo[1]);
   }, [listings, id]);
 
   const handleDescription = e => {
@@ -42,7 +42,7 @@ const ConfirmItem = ({ user, listings }) => {
     } else if (!image) {
       return alert("Please include a photo of the item you found.");
     }
-    const imageRef = storage.child(`images/${image.name}`);
+    const imageRef = storage.child(`images/${shortid.generate()}`);
     setShowSpinner(true);
     const snapshot = await imageRef.put(image);
     const downloadUrl = await snapshot.ref.getDownloadURL();
@@ -52,10 +52,9 @@ const ConfirmItem = ({ user, listings }) => {
       image: downloadUrl,
       email: user.email
     };
-    db.child(`listings/${id}`).update({
-      ...listing,
-      messages: [...listing.messages, message]
-    });
+    const messages = listing.messages ? listing.messages : [];
+    messages.push(message);
+    db.child(`listings/${id}`).update({ ...listing, messages });
     setShowSpinner(false);
     alert(`Successfully Added!`);
     history.push("/");
@@ -65,21 +64,18 @@ const ConfirmItem = ({ user, listings }) => {
     <Container fluid>
       <Row>
         <Col xs={12} sm={6} lg={4}>
-          <h5>Photo of lost item:</h5>
           <Image src={listing.image} fluid></Image>
         </Col>
         <Col xs={12} sm={6} lg={8}>
-          <h4>{listing.name}</h4>
-          <h6>Reward: ${listing.reward}</h6>
+          <h3>{listing.name}</h3>
+          <h5>Reward: ${listing.reward}</h5>
           <div>Date Lost: {listing.date_lost}</div>
           <div>Location Lost: {listing.location}</div>
           <div>Owner: {listing.owner}</div>
           <hr></hr>
           <h5>Did you find this item?</h5>
           <Form.Group>
-            <Form.Label>
-              Confirm your finding by describing what you found:
-            </Form.Label>
+            <Form.Label>Describe your finding:</Form.Label>
             <Form.Control rows="5" as="textarea" onChange={handleDescription} />
           </Form.Group>
           <Row>
@@ -89,12 +85,12 @@ const ConfirmItem = ({ user, listings }) => {
               ) : null}
             </Col>
             <Col xs={12} sm={6} md={7} lg={9}>
-              Add a photo of the item you found:
+              Upload photo of finding:
               <ImageUploader
                 withIcon={true}
                 buttonText="Choose image"
                 onChange={handleImageUpload}
-                imgExtension={[".jpg", ".gif", ".png", ".gif"]}
+                imgExtension={[".jpg", ".gif", ".png", ".jpeg"]}
                 singleImage={true}
               />
               {showSpinner && <Spinner animation="border" />}
