@@ -4,7 +4,7 @@ This repository is for **LostNFound**, a service which allows college students t
 
 Repository: https://github.com/eecs-330-Lost-and-Found/Prototype<br>
 Deployment Link: https://hcilogin.firebaseapp.com/<br>
-Running on local server: Clone the repository, then run `npm install` and `npm start` from the root directory. Navigate to http://localhost:3000 to view the running app. Prototype is best viewed on Google Chrome on a Mac OS.
+Running on local server: Clone the repository, then run `npm install` and `npm start` from the root directory. Navigate to http://localhost:3000 to view the running app. Prototype is best viewed on Google Chrome on a Mac OS. (Note that the Google Maps API will not work on localhost as its usage has been restricted to the deployment link above.)
 
 In order to explore the full functionalities of the app right off the bat, log in as either of the following two users:
 
